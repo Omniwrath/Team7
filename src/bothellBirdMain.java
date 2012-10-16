@@ -14,7 +14,7 @@ public class bothellBirdMain {
 	public static void main(String[] args) {
 		System.out.println("Please add your names to the author line.");
 		// TODO Auto-generated method stub
-		int test; 
+		
 	}
 
 }
