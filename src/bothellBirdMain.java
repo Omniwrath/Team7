@@ -3,7 +3,7 @@
  */
 
 /**
- * @author Justin Ashburn, Kai Flygare, James Hanks, Oanh Tran, Ahmed Brown, 6,7
+ * @author Justin Ashburn, Kai Flygare, James Hanks, Oanh Tran, Ahmed Brown, Matthew,7
  *
  */
 public class bothellBirdMain {
