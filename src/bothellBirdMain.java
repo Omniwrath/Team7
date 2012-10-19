@@ -18,6 +18,7 @@ public class bothellBirdMain {
 		System.out.println("Ahmed Brown is sort of awesome");
 		
 		System.out.println("-1-1-1102293930293802930");
+		System.out.println("Ahmed Brown changed his username and wants to make sure this still works");
 	}
 
 }
