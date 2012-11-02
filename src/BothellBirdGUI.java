@@ -234,7 +234,7 @@ public class BothellBirdGUI extends javax.swing.JFrame {
             public void run() {
             	
             	BothellBirdGUI iBirdsFrame = new BothellBirdGUI();
-
+    
                 Dimension Screen = Toolkit.getDefaultToolkit().getScreenSize();
                 int x = (Screen.width - iBirdsFrame.getWidth())/2;
                 int y = (Screen.height - iBirdsFrame.getHeight())/2;
