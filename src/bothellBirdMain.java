@@ -16,7 +16,7 @@ public class bothellBirdMain {
 		// TODO Auto-generated method stub
 		System.out.println("James made a change from eclipse");
 		System.out.println("Ahmed Brown is sort of awesome");
-		System.out.println("Let kai commit");		
+		System.out.println("Test recommit");		
 		System.out.println("-1-1-1102293930293802930");
 		System.out.println("Ahmed Brown changed his username and wants to make sure this still works");
 	}
