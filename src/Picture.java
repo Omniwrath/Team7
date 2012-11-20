@@ -1,22 +1,24 @@
 public class Picture {
 
-	String birdName;
 	String birdPictureLocation;
 	String pictureCredit;
 
+	
+	public Picture() {
+		birdPictureLocation = "";
+		pictureCredit = "";
+	}
+	
 	public Picture(String birdName, String birdPictureLocation, String pictureCredit) {
-		super();
-		this.birdName = birdName;
 		this.birdPictureLocation = birdPictureLocation;
 		this.pictureCredit = pictureCredit;
 	}
 
-	public String getBirdName() {
-		return birdName;
-	}
-
-	public void setBirdName(String birdName) {
-		this.birdName = birdName;
+	public int buildPicture(String[] data, int location) {
+		birdPictureLocation = data[location++];
+		pictureCredit = data[location++];
+		
+		return location;
 	}
 
 	public String getBirdPictureLocation() {
@@ -35,5 +37,15 @@ public class Picture {
 		this.pictureCredit = pictureCredit;
 	}
 	
+	public String toString() {
+		StringBuilder output = new StringBuilder();
+		String NEW_LINE = System.getProperty("line.separator");
+		
+		
+		output.append("Picture Location: " + birdPictureLocation + NEW_LINE);
+		output.append("Picture Credit:" + pictureCredit + NEW_LINE);
+				
+		return output.toString();
+	}
 
 }

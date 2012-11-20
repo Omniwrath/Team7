@@ -1,20 +1,20 @@
 public class Sound {
 
-	String birdName;
 	String birdSoundLocation;
 
+	
+	public Sound() {
+		birdSoundLocation = "";
+	}
+	
 	public Sound(String birdName, String birdSoundLocation) {
-		super();
-		this.birdName = birdName;
+	
 		this.birdSoundLocation = birdSoundLocation;
 	}
-
-	public String getBirdName() {
-		return birdName;
-	}
-
-	public void setBirdName(String birdName) {
-		this.birdName = birdName;
+	
+	public int buildSound(String[] data, int location) {
+		birdSoundLocation = data[location++];
+		return location;
 	}
 
 	public String getBirdSoundLocation() {

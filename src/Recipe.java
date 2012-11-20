@@ -1,19 +1,20 @@
 public class Recipe {
-	String birdName;
 	String birdRecipe;
 
+	// default constructor, sets recipe to an emptry string
+	public Recipe() {
+		birdRecipe = "";
+	}
+	
 	public Recipe(String birdName, String birdRecipe) {
-		super();
-		this.birdName = birdName;
 		this.birdRecipe = birdRecipe;
 	}
-
-	public String getBirdName() {
-		return birdName;
-	}
-
-	public void setBirdName(String birdName) {
-		this.birdName = birdName;
+	
+	
+	
+	public int buildRecipe(String[] data, int location) {
+		birdRecipe = data[location++];
+		return location;
 	}
 
 	public String getBirdRecipe() {

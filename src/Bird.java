@@ -1,64 +1,40 @@
-/*
- * 
- */
+import java.io.*;
+import java.util.*;
 
 
 public class Bird {
+
+	String myCommonName;
+	GenericInfo myGenericInfo;
+	Picture myPicture;
 	
-	String name;
-	String picture;
-	String description;
-	String sound;
-	String recipe;
 	
-	public Bird(String name, String picture, String description, String sound,
-			String recipe) {
-		super();
-		this.name = name;
-		this.picture = picture;
-		this.description = description;
-		this.sound = sound;
-		this.recipe = recipe;
+	Bird() {
+		myCommonName = "";
+		myPicture = null;
+		myGenericInfo = null;
 	}
 	
-	public String getName() {
-		return name;
+	public int buildBird(String[] birdData, int location) throws FileNotFoundException{
+		myCommonName = birdData[location++];
+		myGenericInfo = new GenericInfo();
+		location = myGenericInfo.buildGenericInfo(birdData, location);
+		myPicture = new Picture();
+		location = myPicture.buildPicture(birdData, location);
+		System.out.println(location);
+		return location;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getPicture() {
-		return picture;
-	}
-	
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-	public String getSound() {
-		return sound;
-	}
-	
-	public void setSound(String sound) {
-		this.sound = sound;
-	}
-	
-	public String getRecipe() {
-		return recipe;
-	}
-	
-	public void setRecipe(String recipe) {
-		this.recipe = recipe;
+	public String toString() {
+		StringBuilder output = new StringBuilder();
+		String NEW_LINE = System.getProperty("line.separator");
+		
+		
+		output.append("Common Name: " + myCommonName + NEW_LINE);
+		output.append(myGenericInfo.toString());
+		output.append(myPicture.toString());
+				
+		return output.toString();
 	}
 	
 }

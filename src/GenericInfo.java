@@ -2,14 +2,26 @@ public class GenericInfo {
 
 	String birdDescription;
 	String birdSpecies;
-	String birdGenus;
+	String birdSnappleFact;
+	String birdScientificName;
+	String birdSize;
 
-	public GenericInfo(String birdDescription, String birdSpecies,
-			String birdGenus) {
-		super();
-		this.birdDescription = birdDescription;
-		this.birdSpecies = birdSpecies;
-		this.birdGenus = birdGenus;
+	// default constructor
+	GenericInfo() {
+		birdSpecies = "";
+		birdScientificName = "";
+		birdDescription = "";
+		birdSize = "";
+		birdSnappleFact = "";
+	}
+		
+	public int buildGenericInfo(String[] data, int location) {
+		birdScientificName = data[location++];
+		birdSnappleFact = data[location++];
+		birdSize = data[location++];
+		
+		
+		return location;
 	}
 
 	public String getBirdDescription() {
@@ -28,12 +40,19 @@ public class GenericInfo {
 		this.birdSpecies = birdSpecies;
 	}
 
-	public String getBirdGenus() {
-		return birdGenus;
+	
+	public String toString() {
+		StringBuilder output = new StringBuilder();
+		String NEW_LINE = System.getProperty("line.separator");
+		
+		
+		output.append("Scientific Name: " + birdScientificName + NEW_LINE);
+		output.append("Snapple Fact: " + birdSnappleFact + NEW_LINE);
+		output.append("Size: " + birdSize + NEW_LINE);
+				
+		return output.toString();
 	}
 
-	public void setBirdGenus(String birdGenus) {
-		this.birdGenus = birdGenus;
-	}
+
 
 }
