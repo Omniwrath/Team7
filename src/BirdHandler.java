@@ -5,12 +5,10 @@ import java.util.*;
  * @author Justin Ashburn, Kai Flygare, James Hanks, Oanh Tran, Ahmed Brown, Matthew, Chad Hickenbottom
  *
  */
-
-
 public class BirdHandler {
 	List<Bird> birdCage;
 	
-	BirdHandler(File input) throws FileNotFoundException {
+	public BirdHandler(File input) throws FileNotFoundException {
 		
 		// make a new list to store the bird objects
 		birdCage = new ArrayList<Bird>();
