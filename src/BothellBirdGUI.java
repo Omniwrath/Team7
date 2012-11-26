@@ -25,7 +25,11 @@ public class BothellBirdGUI extends javax.swing.JFrame {
 	/** Creates new form BothellBirdGUI */
 	public BothellBirdGUI(BirdWhisperer control) {
 		//get current bird
-		control.getBird();//call to the Birdwhisperer getBird, goes to Bird to getBird
+		currentBird=control.getBird();
+		//call to the Birdwhisperer getBird, goes to Bird to getBird
+		//give to the currentBird
+		//now you can just call currentBird.getThisThatw/e();
+		
 		
 		initComponents();
 	}
