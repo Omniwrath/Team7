@@ -37,4 +37,8 @@ public class Bird {
 		return output.toString();
 	}
 	
+	public Bird getBird(){
+		return null;//return null for now-- return for birdwhisperer
+	}
+	
 }

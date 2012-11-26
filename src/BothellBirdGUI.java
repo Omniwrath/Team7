@@ -24,6 +24,9 @@ public class BothellBirdGUI extends javax.swing.JFrame {
 
 	/** Creates new form BothellBirdGUI */
 	public BothellBirdGUI(BirdWhisperer control) {
+		//get current bird
+		control.getBird();//call to the Birdwhisperer getBird, goes to Bird to getBird
+		
 		initComponents();
 	}
 
@@ -396,5 +399,6 @@ public class BothellBirdGUI extends javax.swing.JFrame {
 	private javax.swing.JTextField jTextField1;
 	private javax.swing.JPanel picturejPanel;
 	private javax.swing.JButton soundjButton;
+	private Bird currentBird;//modified
 	// End of variables declaration
 }
