@@ -2,10 +2,6 @@ import java.io.*;
 import java.util.*;
 
 /**
- * 
- */
-
-/**
  * @author Justin Ashburn, Kai Flygare, James Hanks, Oanh Tran, Ahmed Brown, Matthew, Chad Hickenbottom
  *
  */
@@ -66,6 +62,7 @@ public class BirdHandler {
 	
 	/**
 	 * @param args
+	 * main is running program and 
 	 */
 	public static void main(String[] args) {
 		BirdHandler iBird;

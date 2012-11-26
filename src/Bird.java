@@ -9,7 +9,7 @@ public class Bird {
 	Picture myPicture;
 	
 	
-	Bird() {
+	public Bird() {
 		myCommonName = "";
 		myPicture = null;
 		myGenericInfo = null;
