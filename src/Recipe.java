@@ -10,10 +10,11 @@ public class Recipe {
 		this.birdRecipe = birdRecipe;
 	}
 	
-	
+	// buildRecipe
+	// sets data from an array of strings, using location to know where to gather from
 	
 	public int buildRecipe(String[] data, int location) {
-		birdRecipe = data[location++];
+		//birdRecipe = data[location++];
 		return location;
 	}
 
@@ -25,4 +26,12 @@ public class Recipe {
 		this.birdRecipe = birdRecipe;
 	}
 
+	// toString
+	// translates the recipe object into a string
+	
+	public String toString() {
+		StringBuilder output = new StringBuilder();
+		
+		return output.toString();
+	}
 }

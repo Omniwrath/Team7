@@ -15,6 +15,9 @@ public class Bird {
 		myGenericInfo = null;
 	}
 	
+	// buildBird
+	// sets data from an array of strings, using location to know where to gather from
+	
 	public int buildBird(String[] birdData, int location) throws FileNotFoundException{
 		myCommonName = birdData[location++];
 		myGenericInfo = new GenericInfo();
@@ -24,6 +27,9 @@ public class Bird {
 		System.out.println(location);
 		return location;
 	}
+	
+	// toString
+	// returns the bird object in the form of a string
 	
 	public String toString() {
 		StringBuilder output = new StringBuilder();

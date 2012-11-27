@@ -14,7 +14,10 @@ public class GenericInfo {
 		birdSize = "";
 		birdSnappleFact = "";
 	}
-		
+	
+	// buildGenericInfo
+	// sets data from an array of strings, using location to know where to gather from
+	
 	public int buildGenericInfo(String[] data, int location) {
 		birdScientificName = data[location++];
 		birdSnappleFact = data[location++];
@@ -40,6 +43,8 @@ public class GenericInfo {
 		this.birdSpecies = birdSpecies;
 	}
 
+	// toString
+	// returns the GenericInfo in the form of a string
 	
 	public String toString() {
 		StringBuilder output = new StringBuilder();

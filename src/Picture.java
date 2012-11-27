@@ -14,6 +14,9 @@ public class Picture {
 		this.pictureCredit = pictureCredit;
 	}
 
+	// buildPicture
+	// sets data from an array of strings, using location to know where to gather from
+	
 	public int buildPicture(String[] data, int location) {
 		birdPictureLocation = data[location++];
 		pictureCredit = data[location++];
@@ -36,6 +39,9 @@ public class Picture {
 	public void setPictureCredit(String pictureCredit) {
 		this.pictureCredit = pictureCredit;
 	}
+	
+	// toString
+	// translates the picture object into a string
 	
 	public String toString() {
 		StringBuilder output = new StringBuilder();

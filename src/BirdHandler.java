@@ -8,6 +8,10 @@ import java.util.*;
 public class BirdHandler {
 	List<Bird> birdCage;
 	
+	// default construct
+	// builds bird objects from file
+	
+	
 	public BirdHandler(File input) throws FileNotFoundException {
 		
 		// make a new list to store the bird objects
@@ -42,6 +46,9 @@ public class BirdHandler {
 			birdCage.add(temp);
 		}
 	}
+	
+	// toString
+	// returns the list of birds in a string
 	
 	public String toString() {
 		StringBuilder output = new StringBuilder();
