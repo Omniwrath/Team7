@@ -6,7 +6,9 @@ import java.util.*;
  *
  */
 public class BirdHandler {
-	List<Bird> birdCage;
+	List<Bird> birdCage;	// array to store birds
+	Bird currentBird;		// stores the current bird
+	int currentLocation;	// stores the location of the current bird in array
 	
 	// default construct
 	// builds bird objects from file
@@ -40,10 +42,60 @@ public class BirdHandler {
 		String fileContent = strFileContent.toString();
 		String[] splitFileContent = fileContent.split(",|\n");
 		
+		// initializes birds from string array and then stores them in file
+		// temporarily has i+6 because array out of bounds error
+		// i increments through buildBird method
 		for (int i = 0; i+6 < splitFileContent.length;) {
 			Bird temp = new Bird();
 			i = temp.buildBird(splitFileContent, i);
 			birdCage.add(temp);
+		}
+		
+		// sets currentBird to either first bird in list or null
+		if(birdCage.size() > 0) {
+			currentBird = birdCage.get(0);
+			currentLocation = 0;
+		} else {
+			currentBird = null;
+			currentLocation = -1;
+		}
+	}
+	
+	// changeToNextBird()
+	// changes current bird to the next bird in array
+	// if current bird is last bird in array, sets current bird to first bird in array
+	
+	public Bird changeToNextBird() {
+		if(currentBird == null) { // if no birds in list return null
+			return currentBird;
+		} else { // otherwise return next bird, or if at end return first bird
+			if(currentLocation+1 < birdCage.size()) {
+				currentLocation++;
+				currentBird = birdCage.get(currentLocation);
+			} else {
+				currentLocation = 0;
+				currentBird = birdCage.get(currentLocation);
+			}
+			return currentBird;
+		}
+	}
+	
+	// changeToPreviousBird()
+	// changes current bird to the next bird in array
+	// if current bird is last bird in array, sets current bird to first bird in array
+	
+	public Bird changeToPreviousBird() {
+		if(currentBird == null) { // if no birds in list return null
+			return currentBird;
+		} else { // otherwise return next bird, or if at end return first bird
+			if(currentLocation == 0) {
+				currentLocation = birdCage.size();
+				currentBird = birdCage.get(currentLocation);
+			} else {
+				currentLocation--;
+				currentBird = birdCage.get(currentLocation);
+			}
+			return currentBird; // returns the new currentBird object
 		}
 	}
 	
