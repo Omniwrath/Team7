@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class BothellBirdGUI {
-	//-------------------------------------------------------
+	// -------------------------------------------------------
 	// Member variables
 	// ------------------------------------------------------
 	// for pictures, instead of two separate text areas
@@ -23,36 +23,40 @@ public class BothellBirdGUI {
 	private static final String FRAME_TITLE = "Bothell Birder Application";
 	private static final int FRAME_COORD_X = 0;
 	private static final int FRAME_COORD_Y = 0;
-	private static JTextArea birdTextArea; //not used b/c area replaced by picture
+	private static JTextArea birdTextArea; // not used b/c area replaced by
+											// picture
 	private static JLabel searchLabel;
 	private static JTextArea loadingTextArea;
 	private static JTextField searchTextField;
 	private static JButton descriptionButton;
 	private static JButton soundButton;
-	private static JButton searchButton;
+	private static JButton birdListButton;
 	private static JButton recipeButton;
 	private static JButton nextBirdButton;
 	private static JButton prevBirdButton;
 	private static final String SEARCH_FIELD_TEXT = "Enter a Bird Name";
 	private static final String DESCRIP_TEXT = "Description";
 	private static final String SOUND_TEXT = "Sound";
-	private static final String SEARCH_TEXT = "Search";
+	private static final String BIRD_LIST_TEXT = "Search";
 	private static final String RECIPE_TEXT = "Recipe";
 	private static final String NEXT_TEXT = "Next Bird >>";
 	private static final String BACK_TEXT = "<< Previous Bird";
 	private static final int TEXT_FIELD_SIZE = 20;
-	private static final int TEXT_AREA_ROWS = 20; //not used b/c area replaced by picture
-	private static final int TEXT_AREA_COLUMNS = 50;//not used b/c area replaced by picture
+	private static final int TEXT_AREA_ROWS = 20; // not used b/c area replaced
+													// by picture
+	private static final int TEXT_AREA_COLUMNS = 50;// not used b/c area
+													// replaced by picture
 	private static final int LOAD_TEXT_AREA_ROWS = 15;
 	private static final int LOAD_TEXT_AREA_COLUMNS = 50;
 	private static JPanel centerPanel;
 	private static JPanel northPanel;
 	private static JPanel southPanel;
-	private final static int YES_NO_OPTION = 0; // not currently used--for exiting out Y/N
+	private final static int YES_NO_OPTION = 0; // not currently used--for
+												// exiting out Y/N
 
-	//-------------------------------------------------------
+	// -------------------------------------------------------
 	// members for constructing things
-	//-------------------------------------------------------
+	// -------------------------------------------------------
 	public static BirdHandler program;
 	public static BirdWhisperer control;
 	public static BothellBirdGUI iBirdsFrame;
@@ -63,7 +67,8 @@ public class BothellBirdGUI {
 		// initialize these object class
 		try {
 			program = new BirdHandler(new File("birdcage.csv"));
-			control = new BirdWhisperer(program); // what does this really return?
+			control = new BirdWhisperer(program); // what does this really
+													// return?
 			iBirdsFrame = new BothellBirdGUI(control);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -71,11 +76,13 @@ public class BothellBirdGUI {
 		}
 
 	}
-	//-------------------------------------------------------
+
+	// -------------------------------------------------------
 	// constructor to build the GUI and take in the BirdWhisperer Controller
 	// to get a current bird for use
-	//-------------------------------------------------------
+	// -------------------------------------------------------
 	public BothellBirdGUI(BirdWhisperer control) {
+
 
 		// get current bird
 		currentBird = control.getBird();
@@ -84,32 +91,82 @@ public class BothellBirdGUI {
 		// now you can just call currentBird.getThisThatw/e();
 
 		// call methods to construct javapad
+		// NEEDS!!!!--->to be in this order b/c setting the first bird after the
+		// components
 		setComponents();
+		setFirstBird();
 		createPanel();
 		setFrame();
 		addListeners();
+
+	}
+
+	private void setFirstBird() {
+		// TODO Auto-generated method stub
+
+		// add the view for text
+		loadingTextArea.setText(" ");
+		String info = currentBird.getMyGenericInfo().toString();
+		loadingTextArea.append(info);
+
+	}
+
+	// ------------------------------------------------------------------
+	// Reset View
+	// this can probably be refactored and condense b/c of repetitive code
+	// ------------------------------------------------------------------
+	public void setNewBird() {
+
+		// set search text field
+		searchTextField.setText(currentBird.myCommonName);
+
+		// load description
+		loadingTextArea.setText(" ");
+		String info = currentBird.getMyGenericInfo().toString();
+		loadingTextArea.append(info);
+
+		// load new picture
+		String path = currentBird.getMyPicture();
+		BufferedImage image = null;
+		File file = null;
+		file = new File(path);
+		try {
+			image = ImageIO.read(file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Icon icon = new ImageIcon(image);
+		birdPicture.setIcon(icon);
+		// centerPanel.add(birdPicture, BorderLayout.NORTH);
+		// frame.add(centerPanel, BorderLayout.CENTER);
+
 	}
 
 	public void setComponents() {
 		// set components
-		birdTextArea = new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS); //not used
+		birdTextArea = new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS); // not
+																			// used
 		loadingTextArea = new JTextArea(LOAD_TEXT_AREA_ROWS,
 				LOAD_TEXT_AREA_COLUMNS);
-		birdTextArea.setLineWrap(true);//not used b/c area replaced by picture
-		birdTextArea.setForeground(Color.BLACK);//not used b/c area replaced by picture
-		birdTextArea.setBackground(Color.WHITE);//not used b/c area replaced by picture
-		searchLabel = new JLabel(SEARCH_TEXT);
+		birdTextArea.setLineWrap(true);// not used b/c area replaced by picture
+		birdTextArea.setForeground(Color.BLACK);// not used b/c area replaced by
+												// picture
+		birdTextArea.setBackground(Color.WHITE);// not used b/c area replaced by
+												// picture
+		searchLabel = new JLabel(BIRD_LIST_TEXT);
 		searchTextField = new JTextField(TEXT_FIELD_SIZE);
 		searchTextField.setText(SEARCH_FIELD_TEXT);
 		descriptionButton = new JButton(DESCRIP_TEXT);
 		soundButton = new JButton(SOUND_TEXT);
-		searchButton = new JButton(SEARCH_TEXT);
+		birdListButton = new JButton(BIRD_LIST_TEXT);
 		recipeButton = new JButton(RECIPE_TEXT);
 		nextBirdButton = new JButton(NEXT_TEXT);
 		prevBirdButton = new JButton(BACK_TEXT);
 
 		// set picture
-		String path = "bird4.jpg";
+		String path = currentBird.getMyPicture();
 		BufferedImage image = null;
 		File file = null;
 		file = new File(path);
@@ -145,7 +202,7 @@ public class BothellBirdGUI {
 		southPanel = new JPanel(new GridLayout(1, 3));
 		southPanel.add(descriptionButton);
 		southPanel.add(soundButton);
-		southPanel.add(searchButton);
+		southPanel.add(birdListButton);
 		southPanel.add(recipeButton);
 
 		// center
@@ -180,9 +237,11 @@ public class BothellBirdGUI {
 		// ------------------------------------------
 		descriptionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				//gets the currentbird generic info as string and displays it
-				//pops up an error message if it cannot be done
+				// gets the currentbird generic info as string and displays it
+				// pops up an error message if it cannot be done
+
 				try {
+					loadingTextArea.setText(" ");
 					String info = currentBird.getMyGenericInfo().toString();
 					loadingTextArea.append(info);
 				} catch (Exception e) {
@@ -217,10 +276,11 @@ public class BothellBirdGUI {
 		});
 		soundButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
+				//System.out.println("Testing Sound");
 				try {
-					// ------------------------------
-					// IMPLEMENT AN ACTION
-					// ------------------------------
+					// get current bird sound
+					currentBird.getMySound();
+
 				} catch (Exception e) {
 					JOptionPane.showMessageDialog(
 							BothellBirdGUI.getFrame(),
@@ -234,7 +294,7 @@ public class BothellBirdGUI {
 		// This method should be the one to change the controller
 		// because it is requesting for a new bird to display
 		// ------------------------------------------------------
-		searchButton.addActionListener(new ActionListener() {
+		birdListButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				try {
 					// ------------------------------
@@ -270,6 +330,9 @@ public class BothellBirdGUI {
 					// ------------------------------
 					// IMPLEMENT AN ACTION
 					// ------------------------------
+					currentBird = control.getNext(currentBird);
+					setNewBird();// set the new bird view
+
 				} catch (Exception e) {
 					JOptionPane.showMessageDialog(
 							BothellBirdGUI.getFrame(),
@@ -285,6 +348,8 @@ public class BothellBirdGUI {
 					// ------------------------------
 					// IMPLEMENT AN ACTION
 					// ------------------------------
+					currentBird = control.getPrev(currentBird);
+					setNewBird();// set the new bird view
 				} catch (Exception e) {
 					JOptionPane.showMessageDialog(
 							BothellBirdGUI.getFrame(),

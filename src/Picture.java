@@ -45,11 +45,11 @@ public class Picture {
 	
 	public String toString() {
 		StringBuilder output = new StringBuilder();
-		String NEW_LINE = System.getProperty("line.separator");
+		//String NEW_LINE = System.getProperty("line.separator");
 		
 		
-		output.append("Picture Location: " + birdPictureLocation + NEW_LINE);
-		output.append("Picture Credit:" + pictureCredit + NEW_LINE);
+		output.append("Picture Location: " + birdPictureLocation +"\n");
+		output.append("Picture Credit:" + pictureCredit + "\n");
 				
 		return output.toString();
 	}

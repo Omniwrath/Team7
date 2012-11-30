@@ -48,12 +48,12 @@ public class GenericInfo {
 	
 	public String toString() {
 		StringBuilder output = new StringBuilder();
-		String NEW_LINE = System.getProperty("line.separator");
+		//String NEW_LINE = System.getProperty("line.separator");
 		
 		
-		output.append("Scientific Name: " + birdScientificName + NEW_LINE);
-		output.append("Snapple Fact: " + birdSnappleFact + NEW_LINE);
-		output.append("Size: " + birdSize + NEW_LINE);
+		output.append("Scientific Name: " + birdScientificName + "\n");
+		output.append("Snapple Fact: " + birdSnappleFact +"\n");
+		output.append("Size: " + birdSize +"\n");
 				
 		return output.toString();
 	}

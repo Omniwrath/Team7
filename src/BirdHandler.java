@@ -33,7 +33,7 @@ public class BirdHandler {
 				strFileContent.append((char) nextCh);
 			fin.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			//System.out.println(e);
 		}
 		// Create new string from read in file contents
 		// Split contents using a comma OR \n (blank line)
@@ -45,7 +45,7 @@ public class BirdHandler {
 		// initializes birds from string array and then stores them in file
 		// temporarily has i+6 because array out of bounds error
 		// i increments through buildBird method
-		for (int i = 0; i+6 < splitFileContent.length;) {
+		for (int i = 0; i+7 < splitFileContent.length;) {
 			Bird temp = new Bird();
 			i = temp.buildBird(splitFileContent, i);
 			birdCage.add(temp);
@@ -104,7 +104,7 @@ public class BirdHandler {
 	
 	public String toString() {
 		StringBuilder output = new StringBuilder();
-		String NEW_LINE = System.getProperty("line.separator");
+		//String NEW_LINE = System.getProperty("line.separator");
 		
 		for(int i = 0; i < birdCage.size(); i++) {
 			output.append(birdCage.get(i).toString());
@@ -117,23 +117,23 @@ public class BirdHandler {
 	
 	
 	
-	/**
-	 * @param args
-	 * main is running program and 
-	 */
-	public static void main(String[] args) {
-		BirdHandler iBird;
-		
-		File input = new File("birdcage.csv");		
-		try {
-			iBird = new BirdHandler(input);
-			System.out.print(iBird);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-	}
+//	/**
+//	 * @param args
+//	 * main is running program and 
+//	 */
+//	public static void main(String[] args) {
+//		BirdHandler iBird;
+//		
+//		File input = new File("birdcage.csv");		
+//		try {
+//			iBird = new BirdHandler(input);
+//			//System.out.print(iBird);
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		
+//	}
 
 }
