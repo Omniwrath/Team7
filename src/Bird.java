@@ -18,6 +18,14 @@ public class Bird {
 	// buildBird
 	// sets data from an array of strings, using location to know where to gather from
 	
+	public GenericInfo getMyGenericInfo() {
+		return myGenericInfo;
+	}
+
+	public void setMyGenericInfo(GenericInfo myGenericInfo) {
+		this.myGenericInfo = myGenericInfo;
+	}
+
 	public int buildBird(String[] birdData, int location) throws FileNotFoundException{
 		myCommonName = birdData[location++];
 		myGenericInfo = new GenericInfo();
