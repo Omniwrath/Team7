@@ -99,9 +99,42 @@ public class BirdHandler {
 		}
 	}
 	
+    // findBird(String targetName)
+    // Uses a recursive binary search to find bird in array. Currently searches
+    // by common name.
+    // @param targetName: Name of bird to search for
+    // @param minIndex: Index to start from (inclusive)
+    // @param maxIndex: Index to end at (exclusive)
+    // @returns: Bird if targetName found, null if not found
+
+    public Bird findBird(String targetName, int minIndex, int maxIndex) { 
+        if (minIndex < maxIndex) {  // Base case, entire array has been searched
+            return null;            // Bird has not been found, return null
+
+        } else {                    // Recursive case
+            int middleIndex = (maxIndex - minIndex) / 2;
+            String name = birdCage.get(middleIndex).myCommonName;
+            
+
+            // targetName is at a higher index
+            if (name.charAt(0) < targetName.charAt(0) ) {
+                return findBird(targetName, middleIndex + 1, maxIndex);
+
+            // targetName is at a smaller index
+            } else if (name.charAt(0) > targetName.charAt(0) ) { 
+                return findBird(targetName, minIndex, middleIndex - 1);
+
+            // targetName found
+            } else { 
+                return birdCage.get(middleIndex);
+            }
+        }
+    }
+
+
 	// toString
 	// returns the list of birds in a string
-	
+
 	public String toString() {
 		StringBuilder output = new StringBuilder();
 		//String NEW_LINE = System.getProperty("line.separator");
