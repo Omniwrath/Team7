@@ -6,6 +6,7 @@ public class GenericInfo {
 	String birdScientificName;
 	String birdSize;
 
+
 	// default constructor
 	public GenericInfo() {
 		birdSpecies = "";

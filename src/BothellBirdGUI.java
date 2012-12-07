@@ -1,6 +1,6 @@
 import javax.imageio.ImageIO;
+import java.awt.Font;
 import javax.swing.*;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -37,7 +37,8 @@ public class BothellBirdGUI {
 	private static final String SEARCH_FIELD_TEXT = "Enter a Bird Name";
 	private static final String DESCRIP_TEXT = "Description";
 	private static final String SOUND_TEXT = "Sound";
-	private static final String BIRD_LIST_TEXT = "Search";
+	private static final String SEARCH_TEXT = "Search";
+	private static final String BIRD_LIST_TEXT = "Bird List";
 	private static final String RECIPE_TEXT = "Recipe";
 	private static final String NEXT_TEXT = "Next Bird >>";
 	private static final String BACK_TEXT = "<< Previous Bird";
@@ -53,6 +54,8 @@ public class BothellBirdGUI {
 	private static JPanel southPanel;
 	private final static int YES_NO_OPTION = 0; // not currently used--for
 												// exiting out Y/N
+	
+	
 
 	// -------------------------------------------------------
 	// members for constructing things
@@ -103,9 +106,14 @@ public class BothellBirdGUI {
 
 	private void setFirstBird() {
 		// TODO Auto-generated method stub
+		Font font = new Font("", Font.PLAIN, 20);
+		loadingTextArea.setFont(font);
+		loadingTextArea.setLineWrap(true);
+		loadingTextArea.setWrapStyleWord(true);
+
 
 		// add the view for text
-		loadingTextArea.setText(" ");
+		loadingTextArea.setText("");
 		String info = currentBird.getMyGenericInfo().toString();
 		loadingTextArea.append(info);
 
@@ -121,7 +129,12 @@ public class BothellBirdGUI {
 		searchTextField.setText(currentBird.myCommonName);
 
 		// load description
-		loadingTextArea.setText(" ");
+		Font font = new Font("", Font.PLAIN, 20);
+		loadingTextArea.setFont(font);
+		loadingTextArea.setLineWrap(true);
+		loadingTextArea.setWrapStyleWord(true);
+		
+		loadingTextArea.setText("");
 		String info = currentBird.getMyGenericInfo().toString();
 		loadingTextArea.append(info);
 
@@ -155,7 +168,7 @@ public class BothellBirdGUI {
 												// picture
 		birdTextArea.setBackground(Color.WHITE);// not used b/c area replaced by
 												// picture
-		searchLabel = new JLabel(BIRD_LIST_TEXT);
+		searchLabel = new JLabel(SEARCH_TEXT);
 		searchTextField = new JTextField(TEXT_FIELD_SIZE);
 		searchTextField.setText(SEARCH_FIELD_TEXT);
 		descriptionButton = new JButton(DESCRIP_TEXT);
@@ -200,7 +213,7 @@ public class BothellBirdGUI {
 		// north
 		// 4 buttons on grid
 		southPanel = new JPanel(new GridLayout(1, 3));
-		southPanel.add(descriptionButton);
+		//southPanel.add(descriptionButton);
 		southPanel.add(soundButton);
 		southPanel.add(birdListButton);
 		southPanel.add(recipeButton);
@@ -241,7 +254,7 @@ public class BothellBirdGUI {
 				// pops up an error message if it cannot be done
 
 				try {
-					loadingTextArea.setText(" ");
+					loadingTextArea.setText("");
 					String info = currentBird.getMyGenericInfo().toString();
 					loadingTextArea.append(info);
 				} catch (Exception e) {
